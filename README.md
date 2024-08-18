@@ -1,7 +1,7 @@
 # Features
 - Darkmode
 - Using Timer
-#Requirements
+# Requirements
 - Vite version 5.2.0
 - react version 18.2.0
 # How to launch?
