@@ -31,17 +31,13 @@ export default function Todos(){
     const [seconds, setSeconds] = useState(0);
 
     useEffect(() => {
-        // const interval = setInterval(() => {
-        //     setSeconds(seconds + 1);
-        // }, 1000);
-
-        // return () => clearInterval(interval)
-
-        setTimeout(() => {
-            setSeconds(seconds + 1);
+        const interval = setInterval(() => {
+            setSeconds((prevSeconds) => prevSeconds + 1);
         }, 1000);
 
-    }, [seconds])
+        return () => clearInterval(interval)
+
+    }, [])
 
     const checkboxRef = useRef(null);
     
