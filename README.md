@@ -1,8 +1,12 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Features
+- Darkmode
+- Using Timer
+#Requirements
+- Vite version 5.2.0
+- react version 18.2.0
+# How to launch?
+1. Install NodeJS
+2. Clone the repository
+3. Open a command prompt in the project
+4. type `npm i` or `npm install` to install the dependencies
+5. Then type `npm run dev` to execute the project
