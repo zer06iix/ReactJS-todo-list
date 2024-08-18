@@ -1,6 +1,10 @@
 # Features
-- Darkmode
-- Using Timer
+- Add todo 📝
+- Delete todo ❌
+- Edit todo 🖊
+- Darkmode ⚫
+- Using Timer ⏳
+- Check the todo ✅
 # Requirements
 - Vite version 5.2.0
 - react version 18.2.0
