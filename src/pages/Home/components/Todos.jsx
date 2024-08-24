@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import TodoList from "./TodoList"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { v4 as uuidv4 } from 'uuid';
 import DarkModeButton from "./buttons/DarkModeButton";
 
@@ -57,14 +57,14 @@ export default function Todos(){
     }
 
 
-    const handleInputChange = (event) => {
+    const handleInputChange = useCallback((event) => {
         setInputValue(event.target.value);
         if (event.target.value.length > 0) {
             setIsErrorVisible(false);
         }
-    };
+    }, []);
 
-    const addNewTodo = (event) => {
+    const addNewTodo = useCallback((event) => {
         if (event.key === 'Enter') {
             if (inputValue.length === 0) {
                 alert("You didn't enter anything!")
@@ -80,25 +80,25 @@ export default function Todos(){
                 setInputValue("");
             }
         }
-    }
+    }, [todos, inputValue]);
 
-    const deleteTodo = (item) => {
+    const deleteTodo = useCallback((item) => {
         let newTodos = todos.filter((todoItem => {
             return item.id != todoItem.id
         
         }))
         
         setTodos(newTodos)
-    }
+    }, [todos]);
 
-    const handleCheckbox = (item) => {
+    const handleCheckbox = useCallback((item) => {
         let checkbox = todos.filter((todoItem) => {
             return item.status == todoItem.status
         })
         setTodos(prevTodos => prevTodos.map(todo => todo.id === item.id ? { ...todo, status: !todo.status } : todo));
-    }
+    }, [todos]);
 
-    const editTodoHandler = (todo, newTitle) => {
+    const editTodoHandler = useCallback((todo, newTitle) => {
         let newTodos = todos.map((todoItem) => {
             if(todo.id === todoItem.id){
                 todoItem.title = newTitle
@@ -106,7 +106,7 @@ export default function Todos(){
             return todoItem
         })
         setTodos(newTodos)
-    }
+    }, [todos]);
 
     // -------------VARIABLES-------------
     
