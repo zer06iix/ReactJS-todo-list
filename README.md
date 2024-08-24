@@ -7,7 +7,8 @@
 - Using Timer ⏳
 # Requirements
 - Vite version 5.2.0
-- react version 18.2.0
+- React version 18.2.0
+- Tailwind
 # How to launch?
 1. Install NodeJS
 2. Clone the repository
