@@ -7,8 +7,6 @@ export default function DarkModeButton({DarkModeButton}){
 
     const checkboxRef = useRef(null);
 
-    // -------------FUNCTIONS-------------
-
 
     return(
         <div className="absolute ml-0.5 px-20 py-3 mt-1">

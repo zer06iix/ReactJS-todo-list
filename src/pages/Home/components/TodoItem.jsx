@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import EditIcon from "./buttons/EditButton"
 import DeleteIcon from "./buttons/DeleteButton"
-import { useState } from "react"
+import { useState, useCallback } from "react"
 
 
 export default function TodoItem({item, editTodoHandler, deleteTodo, handleCheckbox, darkMode}){
@@ -18,20 +18,21 @@ export default function TodoItem({item, editTodoHandler, deleteTodo, handleCheck
         setEditButton(!editButton)
     }
 
-    const handleInputChange = (event) => {
+    const handleInputChange = useCallback((event) => {
         if(event.key === 'Enter'){
             editTodoHandler(item, event.target.value)
             setEditButton(false)
         }
-    };
+    }, [editTodoHandler, item, setEditButton]);
 
-    const confirmButton = () => {
+    const confirmButton = useCallback(() => {
         editTodoHandler(item, newTitle)
         setEditButton(false)
-    }
-    const cancelButton = () => {
+    }, [editTodoHandler, item ,newTitle, setEditButton]);
+
+    const cancelButton = useCallback(() => {
         setEditButton(false)
-    }
+    }, [setEditButton]);
 
 
 
