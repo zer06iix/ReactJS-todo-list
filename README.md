@@ -15,3 +15,4 @@
 3. Open a command prompt in the project
 4. type `npm i` or `npm install` to install the dependencies
 5. Then type `npm run dev` to execute the project
+6. Open the localhost url which terminal gives to you (usually `http://localhost:5173/`)
