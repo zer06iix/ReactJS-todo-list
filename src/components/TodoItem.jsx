@@ -2,18 +2,18 @@
 /* eslint-disable no-unused-vars */
 import EditIcon from "./buttons/EditButton"
 import DeleteIcon from "./buttons/DeleteButton"
-import { useState, useCallback } from "react"
-
+import { useState, useCallback, useEffect } from "react"
 
 export default function TodoItem({item, editTodoHandler, deleteTodo, handleCheckbox, darkMode}){
 
     // -------------STATES-------------
-
     const [editButton, setEditButton] = useState(false)
     const [newTitle, setNewTitle] = useState(item?.title)
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [isDeleted, setIsDeleted] = useState(false);
 
     // -------------FUNCTIONS-------------
-    
+
     const editHandler = () => {
         setEditButton(!editButton)
     }
@@ -34,11 +34,23 @@ export default function TodoItem({item, editTodoHandler, deleteTodo, handleCheck
         setEditButton(false)
     }, [setEditButton]);
 
+    const handleDelete = () => {
+        setIsDeleting(true);
+        setTimeout(() => {
+            setIsDeleted(true);
+        }, 300);
+    }
 
+    // UseEffect to handle the deletion animation
+    useEffect(() => {
+        if (isDeleted) {
+            deleteTodo(item.id);
+        }
+    }, [isDeleted, deleteTodo, item]);
 
     return (
-        <div>
-            <li className="relative flex items-center justify-between px-2 py-6 border-b">
+        <div style={{ display: isDeleted ? 'none' : 'block' }}>
+            <li className={`relative flex items-center justify-between px-2 py-6 border-b transition-opacity duration-300 ${isDeleting ? 'opacity-0' : 'opacity-100'}`}>
                 <div>
                     <input type="checkbox" onChange={() => handleCheckbox(item)} checked={item?.status} className="cursor-pointer" /> 
                     <div
@@ -77,9 +89,9 @@ export default function TodoItem({item, editTodoHandler, deleteTodo, handleCheck
                         }
                     </div>
                 </div>
-                <button type="button"className="absolute right-0 flex items-center space-x-1">
-                    <EditIcon onClick = {() => editHandler()}/>     
-                    <DeleteIcon onClick = {() => deleteTodo(item)}/>
+                <button type="button" className="absolute right-0 flex items-center space-x-1">
+                    <EditIcon onClick={editHandler}/>     
+                    <DeleteIcon onClick={handleDelete}/>
                 </button>
             </li>
         </div>

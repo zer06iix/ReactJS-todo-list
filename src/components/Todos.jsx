@@ -12,13 +12,13 @@ export default function Todos(){
     const [todos, setTodos] = useState([
         {
             id:uuidv4(),
-            title:"Go to the gym",
+            title:"Write down what you wanna do here XD",
             status:false,
         },
         {
             id:uuidv4(),
-            title:"Do my homeworks",
-            status:false,
+            title:"Do you like this project?",
+            status:true,
         },
     ])
 
